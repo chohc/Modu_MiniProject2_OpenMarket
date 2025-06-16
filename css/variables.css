@@ -1,0 +1,25 @@
+:root {
+  /* color */
+  --green-main: #21bf48;
+  --black-main: #000000;
+  --gray-main: #767676;
+
+  /* font */
+  --font-family: "Spoqa Han Sans Neo", sans-serif;
+
+  /* font-size */
+  /* 14 16 18 24 36 72*/
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+  --font-size-xxl: 2.25rem;
+  --font-size-big: 4.5rem;
+
+  /* space */
+
+  /* border-radius */
+  --border-radius-lg: 50px;
+
+  /* shadow */
+}
