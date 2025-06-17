@@ -1,5 +1,3 @@
-import { BASE_URL } from "../config.js";
-
 export class Card {
   constructor({
     id = 1,
@@ -10,7 +8,7 @@ export class Card {
   } = {}) {
     this.element = document.createElement("a");
     this.element.className = "card";
-    this.element.href = `${BASE_URL}/products/${id}`;
+    this.element.href = `/products/${id}`;
     this.render(imgURL, manufacturer, name, price);
   }
 

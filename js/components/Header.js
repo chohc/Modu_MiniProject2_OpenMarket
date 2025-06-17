@@ -33,7 +33,7 @@ export class Header {
             <nav>
             <ul class="nav-menu">
                 <li>
-                <a href="/cart" class="nav-item">
+                <a href="/cart" data-link  class="nav-item">
                     <img
                     src="./assets/images/icon-shopping-cart.svg"
                     alt=""
@@ -44,7 +44,7 @@ export class Header {
                 </li>
 
                 <li>
-                <a href="/login" class="nav-item">
+                <a href="/login" data-link class="nav-item">
                     <img
                     src="./assets/images/icon-user.svg"
                     alt=""

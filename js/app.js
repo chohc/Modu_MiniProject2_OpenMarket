@@ -12,10 +12,10 @@ function App() {
     router.init();
 
     document.addEventListener("click", (e) => {
-      if (e.target.matches("[data-link]")) {
+      console.log(e.target);
+      if (e.target.matches("[data-link]") || e.target.closest("[data-link]")) {
         e.preventDefault();
-
-        const path = e.target.getAttribute("href");
+        const path = e.target.closest("[data-link]").getAttribute("href");
         console.log("링크 클릭: ", path);
 
         router.navigateTo(path);

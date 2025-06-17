@@ -5,6 +5,15 @@ export function createRouter(mainElement) {
     "/products/:id": () => import("./pages/ProductDetail.js"),
     "/login": () => import("./pages/Login.js"),
     "/signup": () => import("./pages/Signup.js"),
+
+    // github pages
+    "/Modu_MiniProject2_OpenMarket/": () => import("./pages/Products.js"),
+    "/Modu_MiniProject2_OpenMarket/index.html": () =>
+      import("./pages/Products.js"),
+    "/Modu_MiniProject2_OpenMarket/products/:id": () =>
+      import("./pages/ProductDetail.js"),
+    "/Modu_MiniProject2_OpenMarket/login": () => import("./pages/Login.js"),
+    "/Modu_MiniProject2_OpenMarket/signup": () => import("./pages/Signup.js"),
   };
 
   const handleRoute = async () => {
