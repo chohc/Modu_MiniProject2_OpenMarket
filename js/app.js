@@ -2,12 +2,11 @@ import { createRouter } from "./router.js";
 import { Header } from "./components/Header.js";
 
 function App() {
-  const header = document.getElementById("header");
   const main = document.getElementById("main-content");
 
   const init = () => {
-    const headerContent = new Header();
-    header.append(headerContent.element);
+    const header = new Header();
+    document.body.prepend(header.element);
 
     const router = createRouter(main);
     router.init();

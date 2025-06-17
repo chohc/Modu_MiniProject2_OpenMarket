@@ -1,7 +1,8 @@
 export function createRouter(mainElement) {
   const routes = {
-    "/": () => import("./pages/Home.js"),
-    "/product/:id": () => import("./pages/ProductDetail.js"),
+    "/": () => import("./pages/Products.js"),
+    "/index.html": () => import("./pages/Products.js"),
+    "/products/:id": () => import("./pages/ProductDetail.js"),
     "/login": () => import("./pages/Login.js"),
     "/signup": () => import("./pages/Signup.js"),
   };
@@ -9,13 +10,6 @@ export function createRouter(mainElement) {
   const handleRoute = async () => {
     const currentPath = window.location.pathname;
     console.log("현재 경로:", currentPath);
-
-    // header 유무
-    if (["/login", "/signup"].includes(currentPath)) {
-      document.getElementById("header").style.display = "none";
-    } else {
-      document.getElementById("header").style.display = "block";
-    }
 
     const matchedRoute = findMatchingRoute(currentPath);
 
@@ -26,7 +20,9 @@ export function createRouter(mainElement) {
         const pageModule = await matchedRoute.pageLoader();
         const PageComponent = pageModule.default;
         const page = PageComponent(matchedRoute.params);
-        mainElement.innerHTML = page.render();
+        const element = await page.render();
+        mainElement.innerHTML = "";
+        mainElement.appendChild(element);
 
         if (page.init) {
           page.init();

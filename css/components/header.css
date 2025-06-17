@@ -13,8 +13,9 @@ header {
   z-index: 1000;
 
   width: 100%;
-  padding: 1.25rem;
-  background-color: "white";
+  padding: 1.25rem var(--lr-margin);
+  background-color: white;
+  box-shadow: var(--shadow);
 }
 
 .header-content {
@@ -64,8 +65,12 @@ header {
   border-radius: var(--border-radius-lg);
 }
 
-#serch-input {
+#search-input {
   width: 100%;
+}
+
+input::placeholder {
+  color: var(--gray-main);
 }
 
 #search-btn {
