@@ -6,14 +6,17 @@
   --black-main: #000000;
 
   --gray-light: #f2f2f2;
+  --gray-light-middle: #e0e0e0;
   --gray-middle: #c4c4c4;
   --gray-main: #767676;
+
+  --red-main: #eb5757;
 
   /* font */
   --font-family: "Spoqa Han Sans Neo", sans-serif;
 
   /* font-size */
-  /* 14 16 18 24 36 72*/
+  /* 12 14 16 18 24 36 72*/
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
