@@ -1,14 +1,11 @@
 export class Header {
-  constructor(path) {
+  constructor() {
     this.element = document.createElement("header");
-    this.render(path);
+    this.render();
   }
 
-  render(path) {
-    if (path === "./login" || path === "/signup") {
-      this.element.innerHTML = "";
-    } else {
-      this.element.innerHTML = `
+  render() {
+    this.element.innerHTML = `
         <div class="header-content">
             <div class="header-left-content">
             <h1 class="logo">
@@ -33,7 +30,7 @@ export class Header {
             <nav>
             <ul class="nav-menu">
                 <li>
-                <a href="/cart" data-link  class="nav-item">
+                <a href="#" class="nav-item">
                     <img
                     src="./assets/images/icon-shopping-cart.svg"
                     alt=""
@@ -44,7 +41,7 @@ export class Header {
                 </li>
 
                 <li>
-                <a href="/login" data-link class="nav-item">
+                <a href="../../login.html" class="nav-item">
                     <img
                     src="./assets/images/icon-user.svg"
                     alt=""
@@ -57,6 +54,5 @@ export class Header {
             </nav>
         </div>
         `;
-    }
   }
 }

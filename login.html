@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인</title>
+    <link
+      href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="./css/variables.css" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/pages/login.css" />
+  </head>
+  <body>
+    <section class="login-page">
+      <h1 class="login-title">
+        <img src="./assets/images/Logo-hodu.svg" alt="오픈마켓 호두" />
+      </h1>
+      <div class="login">
+        <h2 class="sr-only">로그인</h2>
+        <div class="login-container">
+          <ul class="tab-group">
+            <li><button class="tab-btn active">구매회원 로그인</button></li>
+            <li><button class="tab-btn">판매회원 로그인</button></li>
+          </ul>
+          <form action="post" class="login-form">
+            <label for="id" class="sr-only">아이디</label>
+            <input type="text" id="id" name="id" placeholder="아이디" />
+            <label for="password" class="sr-only">비밀번호</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="비밀번호"
+            />
+            <button type="submit">로그인</button>
+          </form>
+        </div>
+        <nav>
+          <ul class="link-group">
+            <li><a href="/signup">회원가입</a></li>
+            <li>|</li>
+            <li><a href="#">비밀번호 찾기</a></li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+
+    <script type="module" src="./js/pages/login.js"></script>
+  </body>
+</html>
