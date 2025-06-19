@@ -39,10 +39,7 @@ export const fieldValidators = {
     if (!value.trim()) {
       return { isValid: null };
     }
-    if (value.length < 8) {
-      return { isValid: false, message: "비밀번호는 8자 이상 입력해주세요." };
-    }
-    if (!regex.test(value)) {
+    if (value.length < 8 || !regex.test(value)) {
       return {
         isValid: false,
         message: "8자 이상, 영문 대 소문자, 숫자, 특수문자를 사용하세요.",

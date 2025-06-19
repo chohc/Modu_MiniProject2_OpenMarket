@@ -3,6 +3,7 @@ import { inputHandler } from "./handlers/inputHandler.js";
 import { idHandler } from "./handlers/idHandler.js";
 import { phoneHandler } from "./handlers/phoneHandler.js";
 import { signupState } from "./state/signupState.js";
+import { pwHandler } from "./handlers/pwHandler.js";
 
 // 메인 초기화 함수
 function init() {
@@ -12,6 +13,7 @@ function init() {
   tabHandler.init();
   inputHandler.init();
   idHandler.init();
+  pwHandler.init();
   phoneHandler.init();
 
   console.log("초기 상태:", signupState);

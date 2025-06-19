@@ -5,7 +5,7 @@ import { fieldValidators } from "../validators/fieldValidators.js";
 import { validationUtils } from "../utils/validation.js";
 
 export const idHandler = {
-  async handleIdBlur() {
+  handleIdBlur() {
     const value = domElements.inputs.id.value.trim();
     const validation = fieldValidators.id(value);
 
@@ -46,16 +46,6 @@ export const idHandler = {
       signupState.validation.id.isValid = true;
     }
   },
-  // handleIdInput() {
-  //   // 실시간 입력 검사 (중복확인 상태 초기화)
-  //   signupState.validation.id.isChecked = false;
-
-  //   const value = domElements.inputs.id.value.trim();
-  //   if (value && !/^[a-zA-Z0-9]*$/.test(value)) {
-  //     // 허용되지 않는 문자 입력 시 즉시 제거
-  //     domElements.inputs.id.value = value.replace(/[^a-zA-Z0-9]/g, "");
-  //   }
-  // },
 
   async handleIdCheck(e) {
     e.preventDefault();
