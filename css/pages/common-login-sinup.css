@@ -36,7 +36,7 @@
   display: flex;
   flex: 1;
 
-  background-color: var(--gray-light);
+  background-color: var(--gray6);
   border: 1px solid var(--gray-middle);
   border-bottom: 0;
   border-radius: var(--border-radius-sm);

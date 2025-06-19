@@ -135,7 +135,7 @@ input[type="password"] + img {
 }
 
 .num-dropdown > p:hover {
-  background-color: var(--gray-light-middle);
+  background-color: var(--gray5);
 }
 
 #phone2,
@@ -185,5 +185,5 @@ input[type="password"] + img {
 /* submit button */
 
 .m-button {
-  max-width: 480px;
+  width: min(480px, 100%);
 }

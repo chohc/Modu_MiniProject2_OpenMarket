@@ -22,7 +22,12 @@ export class Card {
         <span class="card__manufacturer">${manufacturer}</span>
         <p class="card__name">${name}</p>
         <p class="card__price">
-          ${price.toLocaleString()}<span class="card__price-won"> 원</span>
+          <span class="m-price">
+          ${price.toLocaleString()}
+          </span>
+         <span class="m-price currency">
+         원
+         </span>
         </p>
     `;
   }

@@ -1,12 +1,14 @@
 :root {
+  --max-width: 1280px;
+
   /* color */
   --green-main: #21bf48;
 
   --black-light: #333333;
   --black-main: #000000;
 
-  --gray-light: #f2f2f2;
-  --gray-light-middle: #e0e0e0;
+  --gray5: #e0e0e0;
+  --gray6: #f2f2f2;
   --gray-middle: #c4c4c4;
   --gray-main: #767676;
 

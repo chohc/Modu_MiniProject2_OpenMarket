@@ -62,7 +62,6 @@ label {
 /* l-button */
 
 .l-button {
-  width: 100%;
   padding: 1.19rem 0;
   background-color: var(--green-main);
   border-radius: var(--border-radius-xs);
@@ -79,7 +78,6 @@ label {
 /* m-button */
 
 .m-button {
-  width: 100%;
   padding: 1.19rem 0;
   background-color: var(--green-main);
   border-radius: var(--border-radius-xs);
@@ -94,7 +92,6 @@ label {
 }
 
 .m-dark-button {
-  width: 100%;
   padding: 1.19rem 0;
   background-color: var(--gray-main);
   border-radius: var(--border-radius-xs);
@@ -105,7 +102,6 @@ label {
 }
 
 .m-white-button {
-  width: 100%;
   padding: 1.19rem 0;
   background-color: white;
   border: 1px solid var(--gray-middle);
@@ -181,6 +177,22 @@ label {
   color: var(--black-main);
 }
 
+/* tab button */
+
+.underline-tab-button {
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  color: var(--gray-main);
+
+  padding: 1.19rem 0 1.125rem 0;
+  box-shadow: inset 0 -6px 0 var(--gray5);
+}
+
+.underline-tab-button[aria-selected="true"] {
+  color: var(--green-main);
+  box-shadow: inset 0 -6px 0 var(--green-main);
+}
+
 /* ------------------ */
 
 /* ---- dropdown ---- */
@@ -211,7 +223,55 @@ label {
 }
 
 .num-dropdown > p:hover {
-  background-color: var(--gray-light-middle);
+  background-color: var(--gray5);
+}
+
+/* ------------------ */
+
+/* ----- price ------ */
+
+.s-price {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+.s-price.currency {
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+  color: var(--gray-main);
+}
+
+.m-price {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  margin-right: 2px;
+}
+
+.m-price.currency {
+  font-size: var(--font-size-base);
+  font-weight: 400;
+}
+
+.l-price {
+  font-size: var(--font-size-xxl);
+  font-weight: 700;
+  margin-right: 2px;
+}
+
+.l-price.currency {
+  font-size: var(--font-size-lg);
+  font-weight: 400;
+}
+
+.price-group {
+  font-size: var(--font-size-base);
+  font-weight: 400;
+}
+
+.price-group.price {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
 }
 
 /* ------------------ */
