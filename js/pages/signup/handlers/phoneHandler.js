@@ -8,6 +8,7 @@ export const phoneHandler = {
   },
 
   handlePhoneSelect(e) {
+    e.stopPropagation();
     if (e.target.tagName === "P") {
       domElements.inputs.phone1.textContent = e.target.textContent;
       domElements.modal.dropdown.style.display = "none";

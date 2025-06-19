@@ -12,27 +12,38 @@ export const idHandler = {
     signupState.validation.id.isValid = validation.isValid;
     signupState.validation.id.isChecked = false; // 입력이 변경되면 중복확인 초기화
 
-    if (!validation.isValid) {
+    if (validation.isValid !== null && !validation.isValid) {
       domUtils.showMessage(
         domElements.inputs.id,
         domElements.guides.id,
         validation.message,
         "error"
       );
+      signupState.validation.id.isValid = false;
+    } else if (validation.isValid && validation.message) {
+      // 아이디 유효성 검사 미실시
+      domUtils.showMessage(
+        domElements.inputs.id,
+        domElements.guides.id,
+        validation.message,
+        "error"
+      );
+      signupState.validation.id.isValid = true;
     } else {
       domUtils.clearMessage(domElements.inputs.id, domElements.guides.id);
+      signupState.validation.id.isValid = true;
     }
   },
-  handleIdInput() {
-    // 실시간 입력 검사 (중복확인 상태 초기화)
-    signupState.validation.id.isChecked = false;
+  // handleIdInput() {
+  //   // 실시간 입력 검사 (중복확인 상태 초기화)
+  //   signupState.validation.id.isChecked = false;
 
-    const value = domElements.inputs.id.value.trim();
-    if (value && !/^[a-zA-Z0-9]*$/.test(value)) {
-      // 허용되지 않는 문자 입력 시 즉시 제거
-      domElements.inputs.id.value = value.replace(/[^a-zA-Z0-9]/g, "");
-    }
-  },
+  //   const value = domElements.inputs.id.value.trim();
+  //   if (value && !/^[a-zA-Z0-9]*$/.test(value)) {
+  //     // 허용되지 않는 문자 입력 시 즉시 제거
+  //     domElements.inputs.id.value = value.replace(/[^a-zA-Z0-9]/g, "");
+  //   }
+  // },
 
   async handleIdCheck(e) {
     e.preventDefault();
@@ -100,10 +111,10 @@ export const idHandler = {
       "blur",
       this.handleIdBlur.bind(this)
     );
-    domElements.inputs.id.addEventListener(
-      "input",
-      this.handleIdInput.bind(this)
-    );
+    // domElements.inputs.id.addEventListener(
+    //   "input",
+    //   this.handleIdInput.bind(this)
+    // );
     domElements.buttons.idCheck.addEventListener(
       "click",
       this.handleIdCheck.bind(this)

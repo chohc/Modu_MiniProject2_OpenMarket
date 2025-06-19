@@ -12,11 +12,12 @@ export const signupState = {
   inputOrder: [
     "id",
     "pw",
-    "pw-check",
+    "pwCheck",
     "name",
     "phone2",
     "phone3",
-    "businessNumber,storeName",
+    "businessNumber",
+    "storeName",
   ],
   currentStep: 0,
 };

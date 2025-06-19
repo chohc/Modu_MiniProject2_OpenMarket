@@ -10,7 +10,7 @@ export const tabHandler = {
       signupState.memberPosition = e.target.textContent;
 
       // 판매자 선택 시 추가 필드 표시
-      this.toggleSellerFields(e.target.textContent === "판매회원가입");
+      this.toggleSellerFields(e.target.textContent.trim() === "판매회원가입");
     }
   },
 

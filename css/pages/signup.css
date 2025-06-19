@@ -145,7 +145,7 @@ input[type="password"] + img {
 
 /* seller */
 
-.signup-container .seller-fields {
+.seller-fields {
   display: none;
 }
 

@@ -88,12 +88,12 @@
                 <p id="pw-guide"></p>
               </div>
               <div class="input-container">
-                <label for="pw-check">비밀번호 재확인</label>
+                <label for="pwCheck">비밀번호 재확인</label>
                 <div class="flex-container position-r">
                   <input
                     type="password"
-                    id="pw-check"
-                    name="pw-check"
+                    id="pwCheck"
+                    name="pwCheck"
                     class="text-input-box"
                   />
                   <img
@@ -101,7 +101,7 @@
                     alt="재확인 비밀번호를 작성해주세요."
                   />
                 </div>
-                <p id="pw-check-guide"></p>
+                <p id="pwCheck-guide"></p>
               </div>
             </fieldset>
 
@@ -124,7 +124,7 @@
                 <div class="phone-group">
                   <span class="sr-only">휴대폰번호 앞 3자리</span>
                   <button type="button" class="text-input-box select-btn">
-                    <span id="selected-value">010</span>
+                    <span id="phone1">010</span>
                     <img
                       src="./assets/images/icon-down-arrow.svg"
                       alt="선택지 보기"
@@ -163,36 +163,38 @@
             </fieldset>
 
             <!-- 판매자 전용 -->
-            <fieldset class="seller-fields gap16" aria-hidden="true">
-              <legend class="sr-only">상점 정보</legend>
-              <div class="input-container">
-                <label for="business-number">사업자 등록번호</label>
-                <div class="flex-container">
-                  <input
-                    type="number"
-                    id="business-number"
-                    name="business-number"
-                    class="text-input-box"
-                  />
-                  <button id="business-number-check-btn" class="ms-button">
-                    인증
-                  </button>
+            <div class="seller-fields">
+              <fieldset class="gap16" aria-hidden="true">
+                <legend class="sr-only">상점 정보</legend>
+                <div class="input-container">
+                  <label for="businessNumber">사업자 등록번호</label>
+                  <div class="flex-container">
+                    <input
+                      type="number"
+                      id="businessNumber"
+                      name="businessNumber"
+                      class="text-input-box"
+                    />
+                    <button id="businessNumber-check-btn" class="ms-button">
+                      인증
+                    </button>
+                  </div>
+                  <p id="businessNumber-guide"></p>
                 </div>
-                <p id="business-number-guide"></p>
-              </div>
-              <div class="input-container">
-                <label for="store-name">스토어 이름</label>
-                <div class="flex-container">
-                  <input
-                    type="text"
-                    id="store-name"
-                    name="store-name"
-                    class="text-input-box"
-                  />
+                <div class="input-container">
+                  <label for="storeName">스토어 이름</label>
+                  <div class="flex-container">
+                    <input
+                      type="text"
+                      id="storeName"
+                      name="storeName"
+                      class="text-input-box"
+                    />
+                  </div>
+                  <p id="storeName-guide"></p>
                 </div>
-                <p id="store-name-guide"></p>
-              </div>
-            </fieldset>
+              </fieldset>
+            </div>
             <!-- // 판매자 전용 -->
           </div>
           <!-- // 정보입력 -->

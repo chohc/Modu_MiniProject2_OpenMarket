@@ -22,8 +22,12 @@ export const inputHandler = {
       const input = domElements.inputs[inputId];
       const guideElement = domUtils.getGuideElement(inputId);
 
-      if (input && guideElement && !this.isStepCompleted(i)) {
-        // fail class는 추가하지 않고 메시지만 표시
+      if (
+        input.value.trim().length === 0 &&
+        input &&
+        guideElement &&
+        !this.isStepCompleted(i)
+      ) {
         guideElement.style.color = "#EB5757";
         guideElement.textContent = "필수 정보입니다.";
       }
@@ -48,6 +52,10 @@ export const inputHandler = {
         return signupState.validation.name.isValid;
       case "phone2":
       case "phone3":
+        return signupState.validation.phone.isValid;
+      case "business-number":
+        return signupState.validation.phone.isValid;
+      case "store-name":
         return signupState.validation.phone.isValid;
       default:
         return false;
