@@ -24,6 +24,12 @@ export const fieldValidators = {
         message: "아이디 유효성 검사를 해주세요.",
       };
     }
+    if (signupState.validation.id.isChecked) {
+      return {
+        isValid: true,
+        message: "멋진 아이디네요:)",
+      };
+    }
     return { isValid: true, message: "" };
   },
 

@@ -10,7 +10,6 @@ export const idHandler = {
     const validation = fieldValidators.id(value);
 
     signupState.validation.id.isValid = validation.isValid;
-    signupState.validation.id.isChecked = false; // 입력이 변경되면 중복확인 초기화
 
     if (validation.isValid !== null && !validation.isValid) {
       domUtils.showMessage(
@@ -20,8 +19,21 @@ export const idHandler = {
         "error"
       );
       signupState.validation.id.isValid = false;
+    } else if (
+      validation.isValid &&
+      validation.message &&
+      signupState.validation.id.isChecked
+    ) {
+      // 중복검사도 완료했지만 input을 다시 한번 눌렀다 다른데 간 경우
+      domUtils.showMessage(
+        domElements.inputs.id,
+        domElements.guides.id,
+        validation.message,
+        "success"
+      );
+      signupState.validation.id.isValid = true;
     } else if (validation.isValid && validation.message) {
-      // 아이디 유효성 검사 미실시
+      // 아이디 중복 검사 미실시
       domUtils.showMessage(
         domElements.inputs.id,
         domElements.guides.id,
@@ -111,6 +123,9 @@ export const idHandler = {
       "blur",
       this.handleIdBlur.bind(this)
     );
+    domElements.inputs.id.addEventListener("keydown", () => {
+      signupState.validation.id.isChecked = false; // 입력이 변경되면 중복확인 초기화
+    });
     // domElements.inputs.id.addEventListener(
     //   "input",
     //   this.handleIdInput.bind(this)
