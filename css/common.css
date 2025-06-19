@@ -26,9 +26,7 @@ li {
 
 label {
   display: inline-block;
-
   color: var(--gray-main);
-  margin-bottom: 0.625rem;
 }
 
 .text-input {

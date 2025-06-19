@@ -57,20 +57,27 @@
           <div class="signup-container">
             <fieldset>
               <legend class="sr-only">아이디, 비밀번호</legend>
-              <div>
+              <div class="input-container">
                 <label for="id">아이디</label>
                 <div class="flex-container">
-                  <input type="text" id="id" name="id" class="text-input-box" />
+                  <input
+                    type="text"
+                    id="id"
+                    name="id"
+                    maxlength="20"
+                    class="text-input-box"
+                  />
                   <button id="id-check-btn" class="ms-button">중복확인</button>
                 </div>
+                <p id="id-guide"></p>
               </div>
-              <div>
-                <label for="password">비밀번호</label>
+              <div class="input-container">
+                <label for="pw">비밀번호</label>
                 <div class="flex-container position-r">
                   <input
                     type="password"
-                    id="password"
-                    name="password"
+                    id="pw"
+                    name="pw"
                     class="text-input-box"
                   />
                   <img
@@ -78,14 +85,15 @@
                     alt="비밀번호를 작성해주세요."
                   />
                 </div>
+                <p id="pw-guide"></p>
               </div>
-              <div>
-                <label for="password-check">비밀번호 재확인</label>
+              <div class="input-container">
+                <label for="pw-check">비밀번호 재확인</label>
                 <div class="flex-container position-r">
                   <input
                     type="password"
-                    id="password-check"
-                    name="password-check"
+                    id="pw-check"
+                    name="pw-check"
                     class="text-input-box"
                   />
                   <img
@@ -93,12 +101,13 @@
                     alt="재확인 비밀번호를 작성해주세요."
                   />
                 </div>
+                <p id="pw-check-guide"></p>
               </div>
             </fieldset>
 
             <fieldset class="gap16">
-              <legend class="sr-only">본인 정보</legend>
-              <div>
+              <legend class="sr-only">개인 정보</legend>
+              <div class="input-container">
                 <label for="name">이름</label>
                 <div class="flex-container">
                   <input
@@ -108,8 +117,9 @@
                     class="text-input-box"
                   />
                 </div>
+                <p id="name-guide"></p>
               </div>
-              <div>
+              <div class="input-container">
                 <label for="phone">휴대폰번호</label>
                 <div class="phone-group">
                   <span class="sr-only">휴대폰번호 앞 3자리</span>
@@ -148,13 +158,14 @@
                     class="text-input-box"
                   />
                 </div>
+                <p id="phone-gudie"></p>
               </div>
             </fieldset>
 
             <!-- 판매자 전용 -->
             <fieldset class="seller-fields gap16" aria-hidden="true">
               <legend class="sr-only">상점 정보</legend>
-              <div>
+              <div class="input-container">
                 <label for="business-number">사업자 등록번호</label>
                 <div class="flex-container">
                   <input
@@ -167,8 +178,9 @@
                     인증
                   </button>
                 </div>
+                <p id="business-number-guide"></p>
               </div>
-              <div>
+              <div class="input-container">
                 <label for="store-name">스토어 이름</label>
                 <div class="flex-container">
                   <input
@@ -178,6 +190,7 @@
                     class="text-input-box"
                   />
                 </div>
+                <p id="store-name-guide"></p>
               </div>
             </fieldset>
             <!-- // 판매자 전용 -->
@@ -198,6 +211,6 @@
       </section>
     </main>
 
-    <script type="module" src="./js/pages/signup.js"></script>
+    <script type="module" src="./js/pages/signup/signup.js"></script>
   </body>
 </html>
