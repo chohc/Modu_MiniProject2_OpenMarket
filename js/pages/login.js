@@ -1,5 +1,6 @@
 import { BASE_URL } from "../config.js";
 
+const guideText = document.getElementById("login-guide");
 const form = document.querySelector(".login-form");
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -10,7 +11,11 @@ async function handleLogin() {
   const username = form.id.value.trim();
   const password = form.password.value.trim();
 
-  if (!username || !password) {
+  if (!username) {
+    guideText.textContent = "아이디를 입력해 주세요.";
+    return;
+  } else if (!password) {
+    guideText.textContent = "비밀번호를 입력해 주세요.";
     return;
   }
 
@@ -24,16 +29,17 @@ async function handleLogin() {
     });
 
     if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.message || "로그인에 실패했습니다.");
+      guideText.textContent = "아이디 또는 비밀번호가 일치하지 않습니다.";
+      return;
     }
 
     const data = await response.json();
     console.log("로그인 성공", data);
 
     // save token
-    localStorage.setItem("token", data.token);
-    localStorage.setItem("userInfo", JSON.stringify(data.user));
+    localStorage.setItem("access_token", data.access);
+    localStorage.setItem("refresh_token", data.refresh);
+    localStorage.setItem("user_info", JSON.stringify(data.user));
 
     // redirect
     window.location.href = "/";

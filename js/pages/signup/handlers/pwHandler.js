@@ -1,4 +1,3 @@
-import { BASE_URL } from "../../../config.js";
 import { signupState } from "../state/signupState.js";
 import { domElements, domUtils } from "../utils/dom.js";
 import { fieldValidators } from "../validators/fieldValidators.js";

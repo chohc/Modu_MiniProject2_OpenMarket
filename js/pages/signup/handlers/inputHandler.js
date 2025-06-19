@@ -7,7 +7,6 @@ export const inputHandler = {
     const inputId = e.target.id;
 
     if (!validationUtils.isInputOrderValid(inputId)) {
-      e.target.blur();
       this.showOrderWarning(inputId);
       return false;
     }

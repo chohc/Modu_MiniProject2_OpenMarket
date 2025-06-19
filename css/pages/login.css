@@ -35,6 +35,10 @@
   margin-top: 30px;
 }
 
+#login-guide {
+  color: var(--red-main);
+}
+
 .link-group {
   display: flex;
   align-items: center;

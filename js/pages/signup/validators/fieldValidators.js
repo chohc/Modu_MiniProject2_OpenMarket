@@ -61,7 +61,7 @@ export const fieldValidators = {
   phone(phone2, phone3) {
     const phoneRegex = /^\d{4}$/;
     if (!phone2.trim() || !phone3.trim()) {
-      return { isValid: false, message: "휴대폰 번호를 입력해주세요." };
+      return { isValid: false, message: "필수 정보입니다." };
     }
     if (!phoneRegex.test(phone2) || !phoneRegex.test(phone3)) {
       return { isValid: false, message: "올바른 휴대폰 번호를 입력해주세요." };
