@@ -8,7 +8,7 @@ export class Card {
   } = {}) {
     this.element = document.createElement("a");
     this.element.className = "card";
-    this.element.href = `/products/${id}`;
+    this.element.href = `../../productDetail.html?id=${id}`;
     this.render(imgURL, manufacturer, name, price);
   }
 

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <meta
+      name="description"
+      content="딥러닝 개발자 무릎 담요 - 백엔드글로벌 17,500원"
+    />
+    <meta property="og:title" content="딥러닝 개발자 무릎 담요" />
+    <meta
+      property="og:description"
+      content="편안한 개발 환경을 위한 무릎 담요"
+    />
+    <meta property="og:image" content="./assets/images/products/img.png" /> -->
+    <title>상품 상세</title>
+    <link
+      href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="./css/variables.css" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/components/header.css" />
+    <link rel="stylesheet" href="./css/pages/productDetail.css" />
+  </head>
+  <body>
+    <main>
+      <section class="product-header">
+        <img
+          src="./assets/images/products/img.png"
+          alt="딥러닝 개발자 무릎 담요"
+          loading="lazy"
+          width="600"
+          height="600"
+        />
+        <div class="product">
+          <div class="product-title">
+            <span class="product__brand"> 백엔드글로벌 </span>
+            <h2 class="product__name">딥러닝 개발자 무릎 담요</h2>
+            <p class="product__price">
+              <span class="amount">17,500</span>
+              <span class="won">원</span>
+            </p>
+          </div>
+          <div class="product-buy">
+            <p class="product__delivery">택배배송 / 무료배송</p>
+            <div class="product__count">
+              <button class="minus" aria-label="수량 감소"></button>
+              <input
+                type="number"
+                class="count"
+                value="1"
+                min="1"
+                aria-label="상품 수량"
+              />
+              <button class="plus" aria-label="수량 증가"></button>
+            </div>
+            <div class="product__total-price">
+              <h3>총 상품 금액</h3>
+              <div class="total-price">
+                <p class="total">총 수량 <span id="totalQuantity">1</span>개</p>
+                <span aria-hidden="true">|</span>
+                <p class="price">
+                  <span id="totalPrice">17,500</span>
+                  <span class="currency">원</span>
+                </p>
+              </div>
+            </div>
+            <div class="buy-btns">
+              <button id="buyProductBtn">바로 구매</button>
+              <button id="cartBtn">장바구니</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="product-info">
+        <h2>상품 상세</h2>
+        <ul class="product__tab-group" role="tablist">
+          <li role="presentation">
+            <button
+              role="tab"
+              aria-selected="true"
+              aria-controls="panel-detail"
+            >
+              상품정보
+            </button>
+          </li>
+          <li role="presentation">
+            <button
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-review"
+            >
+              리뷰
+            </button>
+          </li>
+          <li role="presentation">
+            <button role="tab" aria-selected="false" aria-controls="panel-qna">
+              Q&A
+            </button>
+          </li>
+          <li role="presentation">
+            <button
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-return"
+            >
+              반품/교환정보
+            </button>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer>
+      <div class="footer-container">
+        <nav>
+          <ul class="nav-etc">
+            <li><a href="">호두샵 소개</a></li>
+            <li><span class="separator" aria-hidden="true">|</span></li>
+            <li><a href="">이용약관</a></li>
+            <li><span class="separator" aria-hidden="true">|</span></li>
+            <li><a href="">개인정보처리방침</a></li>
+            <li><span class="separator" aria-hidden="true">|</span></li>
+            <li><a href="">전자금융거래약관</a></li>
+            <li><span class="separator" aria-hidden="true">|</span></li>
+            <li><a href="">청소년보호정책</a></li>
+            <li><span class="separator" aria-hidden="true">|</span></li>
+            <li><a href="">제휴문의</a></li>
+          </ul>
+
+          <ul class="nav-sns">
+            <li>
+              <a href="#" aria-label="인스타그램 페이지로 이동">
+                <img src="./assets/images/icon-insta.svg" alt="" />
+              </a>
+            </li>
+            <li>
+              <a href="#" aria-label="페이스북 페이지로 이동">
+                <img src="./assets/images/icon-fb.svg" alt="" />
+              </a>
+            </li>
+            <li>
+              <a href="#" aria-label="유튜브 페이지로 이동">
+                <img src="./assets/images/icon-yt.svg" alt="" />
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <dl class="company-info">
+          <dt>주식회사명</dt>
+          <dd>(주)HODU SHOP</dd>
+          <dt>주소</dt>
+          <dd>제주특별자치도 제주시 동광고 137 제주코딩베이스캠프</dd>
+          <dt>사업자번호</dt>
+          <dd>000-0000-0000 | 통신판매업</dd>
+          <dt>대표</dt>
+          <dd>김호두</dd>
+        </dl>
+      </div>
+    </footer>
+
+    <script type="module" src="./js/pages/productDetail.js"></script>
+  </body>
+</html>
