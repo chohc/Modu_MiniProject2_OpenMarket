@@ -3,9 +3,94 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>페이지 없음</title>
+    <title>404 error</title>
+    <link
+      href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="./css/variables.css" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/common.css" />
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+      }
+
+      .page404 {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+
+        width: min(740px, 100%);
+        margin: 0 auto;
+      }
+
+      .page404 > img {
+        width: 37%;
+        height: auto;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .title {
+        font-size: var(--font-size-xxl);
+        font-weight: 700;
+        margin-bottom: 1.25rem;
+      }
+
+      .description {
+        color: var(--gray-main);
+        margin-bottom: 2.5rem;
+      }
+
+      .btn-group {
+        display: flex;
+        gap: 14px;
+      }
+
+      .btn-group > a,
+      .btn-group > button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+      }
+    </style>
   </head>
   <body>
-    404페이지 테스트
+    <main class="page404">
+      <img src="./assets/images/icon-404.png" alt="404 error" />
+      <div class="container">
+        <h1 class="title">페이지를 찾을 수 없습니다.</h1>
+        <p class="description">
+          페이지가 존재하지 않거나 사용할 수 없는 페이지 입니다.<br />웹 주소가
+          올바른지 확인해 주세요.
+        </p>
+        <nav class="btn-group">
+          <a href="./index.html" class="m-button">메인으로</a>
+          <button id="backBtn" onclick="goBack()" class="m-white-button">
+            이전 페이지
+          </button>
+        </nav>
+      </div>
+    </main>
   </body>
+
+  <script>
+    function goBack() {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = "./index.html";
+      }
+    }
+  </script>
 </html>
