@@ -3,12 +3,16 @@ import { initTabHandler } from "../utils/tabUtils.js";
 
 const guideText = document.getElementById("login-guide");
 const form = document.querySelector(".login-form");
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  await handleLogin();
-});
 
-initTabHandler(".tab-group");
+function init() {
+  initTabHandler(".tab-group");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    await handleLogin();
+  });
+}
+
+document.addEventListener("DOMContentLoaded", init);
 
 async function handleLogin() {
   const username = form.id.value.trim();

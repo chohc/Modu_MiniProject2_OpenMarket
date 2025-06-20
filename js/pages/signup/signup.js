@@ -6,11 +6,9 @@ import { signupState } from "./state/signupState.js";
 import { pwHandler } from "./handlers/pwHandler.js";
 import { initTabHandler } from "../../utils/tabUtils.js";
 
-// 메인 초기화 함수
 function init() {
   console.log("회원가입 페이지 초기화");
 
-  // 각 핸들러 초기화
   inputHandler.init();
   idHandler.init();
   pwHandler.init();
@@ -30,5 +28,4 @@ function toggleSellerMode(target) {
   }
 }
 
-// 페이지 로드 시 초기화
 document.addEventListener("DOMContentLoaded", init);

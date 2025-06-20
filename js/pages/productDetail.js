@@ -2,30 +2,57 @@ import "../common.js";
 import { BASE_URL } from "../config.js";
 import { initTabHandler } from "../utils/tabUtils.js";
 
-const img = document.querySelector(".product__img");
-const brand = document.querySelector(".product__brand");
-const name = document.querySelector(".product__name");
-const price = document.querySelector(".product__price .l-price");
-const delivery = document.querySelector(".product__delivery");
-const totalQuantity = document.getElementById("totalQuantity");
-const totalPrice = document.getElementById("totalPrice");
-const minusBtn = document.getElementById("minusBtn");
-const count = document.getElementById("count");
-const plusBtn = document.getElementById("plusBtn");
+const elements = {
+  img: document.querySelector(".product__img"),
+  brand: document.querySelector(".product__brand"),
+  name: document.querySelector(".product__name"),
+  price: document.querySelector(".product__price .l-price"),
+  delivery: document.querySelector(".product__delivery"),
+  totalQuantity: document.getElementById("totalQuantity"),
+  totalPrice: document.getElementById("totalPrice"),
+  minusBtn: document.getElementById("minusBtn"),
+  count: document.getElementById("count"),
+  plusBtn: document.getElementById("plusBtn"),
+};
+
+const DELIVERY_MAP = {
+  PARCEL: "택배배송 / 무료배송",
+};
 
 const urlParams = new URLSearchParams(window.location.search);
 const productID = urlParams.get("id");
 
-const deliveryMap = {
-  PARCEL: "택배배송 / 무료배송",
-};
+function init() {
+  if (!productID) {
+    console.error("상품 ID가 없습니다.");
+    return;
+  }
 
-document.addEventListener("DOMContentLoaded", async () => {
-  await fetchProductDetail(productID);
-});
+  setupEventListeners();
+  initTabHandler(".product__tab-group");
+  fetchProductDetail(productID);
+}
 
-minusBtn.addEventListener("click", () => countBtnClick("-"));
-plusBtn.addEventListener("click", () => countBtnClick("+"));
+function setupEventListeners() {
+  elements.minusBtn.addEventListener("click", () => updateQuantity("-"));
+  elements.plusBtn.addEventListener("click", () => updateQuantity("+"));
+}
+
+function updateQuantity(operation) {
+  let countValue = Number(elements.count.value);
+
+  if (operation === "-") {
+    if (countValue > 1) countValue -= 1;
+  } else {
+    countValue += 1;
+  }
+
+  elements.count.value = countValue;
+  elements.totalQuantity.textContent = countValue;
+  elements.totalPrice.textContent = (
+    Number(elements.price.textContent.replace(/,/g, "")) * countValue
+  ).toLocaleString();
+}
 
 async function fetchProductDetail(productID) {
   try {
@@ -34,37 +61,20 @@ async function fetchProductDetail(productID) {
     if (!response.ok) throw new Error("네트워크 오류");
 
     const data = await response.json();
-    console.log(data);
-    settingContent(data);
+    displayProductInfo(data);
   } catch (error) {
     console.log("상품 디테일 불러오기 실패: ", error);
   }
 }
 
-function settingContent(data) {
-  img.src = data.image;
-  brand.textContent = data.seller.store_name;
-  name.textContent = data.name;
-  price.textContent = data.price.toLocaleString();
-  delivery.textContent = deliveryMap[data.shipping_method];
-  totalQuantity.textContent = count.value;
-  totalPrice.textContent = data.price.toLocaleString();
+function displayProductInfo(data) {
+  elements.img.src = data.image;
+  elements.brand.textContent = data.seller.store_name;
+  elements.name.textContent = data.name;
+  elements.price.textContent = data.price.toLocaleString();
+  elements.delivery.textContent = DELIVERY_MAP[data.shipping_method];
+  elements.totalQuantity.textContent = elements.count.value;
+  elements.totalPrice.textContent = data.price.toLocaleString();
 }
 
-function countBtnClick(operation) {
-  console.log("dadf");
-  let countValue = Number(count.value);
-  if (operation === "-") {
-    if (countValue > 1) countValue -= 1;
-  } else {
-    countValue += 1;
-  }
-  count.value = countValue;
-  totalQuantity.textContent = countValue;
-  totalPrice.textContent = (
-    Number(price.textContent.replace(/,/g, "")) * countValue
-  ).toLocaleString();
-}
-
-// tab button
-initTabHandler(".product__tab-group");
+document.addEventListener("DOMContentLoaded", init);

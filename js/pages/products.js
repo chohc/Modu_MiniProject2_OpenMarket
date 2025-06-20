@@ -2,31 +2,18 @@ import "../common.js";
 import { Card } from "../components/Card.js";
 import { BASE_URL } from "../config.js";
 
-async function fetchProducts() {
-  try {
-    const response = await fetch(`${BASE_URL}/products/`);
+const productSection = document.querySelector(".product-list");
 
-    if (!response.ok) throw new Error("네트워크 오류");
-
-    const data = await response.json();
-    return data.results;
-  } catch (error) {
-    console.error("상품 목록 불러오기 실패:", error);
-  }
-}
-
-async function render() {
-  // header
-  // const header = new Header();
-  // document.body.prepend(header.element);
-
-  // product
-  const productSection = document.querySelector(".product-list");
-
+function init() {
   if (!productSection) {
     console.error("상품 목록 섹션을 찾을 수 없습니다.");
+    return;
   }
 
+  displayProducts();
+}
+
+async function displayProducts() {
   try {
     productSection.innerHTML = "<div>상품을 불러오는 중...</div>";
 
@@ -52,8 +39,17 @@ async function render() {
   }
 }
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", render);
-} else {
-  render();
+async function fetchProducts() {
+  try {
+    const response = await fetch(`${BASE_URL}/products/`);
+
+    if (!response.ok) throw new Error(response.status);
+
+    const data = await response.json();
+    return data.results || [];
+  } catch (error) {
+    console.error("상품 목록 불러오기 실패:", error);
+  }
 }
+
+document.addEventListener("DOMContentLoaded", init);
