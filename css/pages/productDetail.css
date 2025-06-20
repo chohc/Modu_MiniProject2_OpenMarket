@@ -17,6 +17,7 @@
 
 .product-header > img {
   width: 47%;
+  height: auto;
   aspect-ratio: 1/1;
   object-fit: cover;
 }

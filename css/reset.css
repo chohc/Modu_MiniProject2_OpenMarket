@@ -23,6 +23,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   word-break: keep-all;
   word-wrap: break-word;
+  overscroll-behavior: none;
 }
 
 h1,
