@@ -123,6 +123,7 @@ label {
   background-color: var(--green-main);
   border-radius: var(--border-radius-xs);
 
+  font-size: var(--font-size-lg);
   font-weight: 500;
   color: white;
 }
