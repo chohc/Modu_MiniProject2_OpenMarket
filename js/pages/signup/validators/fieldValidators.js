@@ -6,9 +6,6 @@ export const fieldValidators = {
     if (!value.trim()) {
       return { isValid: null };
     }
-    // if (value.length < 4) {
-    //   return { isValid: false, message: "아이디는 4자 이상 입력해주세요." };
-    // }
     if (value.length > 20) {
       return { isValid: false, message: "아이디는 20자 이하로 입력해주세요." };
     }
