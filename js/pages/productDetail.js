@@ -1,4 +1,5 @@
 import "../common.js";
+import { Amount } from "../components/Amount.js";
 import { BASE_URL } from "../config.js";
 import { initTabHandler } from "../utils/tabUtils.js";
 
@@ -28,30 +29,9 @@ function init() {
     return;
   }
 
-  setupEventListeners();
   initTabHandler(".product__tab-group");
   fetchProductDetail(productID);
-}
-
-function setupEventListeners() {
-  elements.minusBtn.addEventListener("click", () => updateQuantity("-"));
-  elements.plusBtn.addEventListener("click", () => updateQuantity("+"));
-}
-
-function updateQuantity(operation) {
-  let countValue = Number(elements.count.value);
-
-  if (operation === "-") {
-    if (countValue > 1) countValue -= 1;
-  } else {
-    countValue += 1;
-  }
-
-  elements.count.value = countValue;
-  elements.totalQuantity.textContent = countValue;
-  elements.totalPrice.textContent = (
-    Number(elements.price.textContent.replace(/,/g, "")) * countValue
-  ).toLocaleString();
+  createAmountBtn();
 }
 
 async function fetchProductDetail(productID) {
@@ -75,6 +55,21 @@ function displayProductInfo(data) {
   elements.delivery.textContent = DELIVERY_MAP[data.shipping_method];
   elements.totalQuantity.textContent = elements.count.value;
   elements.totalPrice.textContent = data.price.toLocaleString();
+}
+
+function createAmountBtn() {
+  new Amount({
+    initialValue: 1,
+    min: 1,
+    max: 99,
+    containerSelector: ".product__count-container",
+    onChange: (value) => {
+      elements.totalQuantity.textContent = value;
+      elements.totalPrice.textContent = (
+        Number(elements.price.textContent.replace(/,/g, "")) * value
+      ).toLocaleString();
+    },
+  });
 }
 
 document.addEventListener("DOMContentLoaded", init);

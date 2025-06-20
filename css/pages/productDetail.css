@@ -59,40 +59,6 @@
   margin-bottom: 32px;
 }
 
-.product__count {
-  display: grid;
-  grid-template-columns: repeat(3, 50px);
-  height: 50px;
-}
-
-.product__count > button,
-.product__count > input {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  text-align: center;
-  border: 1px solid var(--gray-middle);
-}
-
-.product__count .minus {
-  background: url(../../assets/images/icon-minus-line.svg) center center
-    no-repeat;
-
-  border-top-left-radius: var(--border-radius-xs);
-  border-bottom-left-radius: var(--border-radius-xs);
-  border-right: 0;
-}
-
-.product__count .plus {
-  background: url(../../assets/images/icon-plus-line.svg) center center
-    no-repeat;
-
-  border-top-right-radius: var(--border-radius-xs);
-  border-bottom-right-radius: var(--border-radius-xs);
-  border-left: 0;
-}
-
 /* total price */
 
 .product__total-price {

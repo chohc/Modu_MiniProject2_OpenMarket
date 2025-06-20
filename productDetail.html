@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="./css/common.css" />
     <link rel="stylesheet" href="./css/components/header.css" />
     <link rel="stylesheet" href="./css/pages/productDetail.css" />
+    <link rel="stylesheet" href="./css/components/amount.css" />
   </head>
   <body>
     <main class="product-detail-page">
@@ -45,25 +46,7 @@
           <div class="product-buy">
             <p class="product__delivery">택배배송 / 무료배송</p>
             <div class="product__count-container">
-              <div class="product__count">
-                <button
-                  id="minusBtn"
-                  class="minus"
-                  aria-label="수량 감소"
-                ></button>
-                <input
-                  id="count"
-                  type="number"
-                  value="1"
-                  min="1"
-                  aria-label="상품 수량"
-                />
-                <button
-                  id="plusBtn"
-                  class="plus"
-                  aria-label="수량 증가"
-                ></button>
-              </div>
+              <!-- Amount component -->
             </div>
             <div class="product__total-price">
               <h3>총 상품 금액</h3>
