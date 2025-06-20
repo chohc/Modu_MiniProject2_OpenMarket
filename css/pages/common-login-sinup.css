@@ -51,7 +51,7 @@
   padding-bottom: 18px;
 }
 
-.tab-btn.active {
+.tab-btn[aria-selected="true"] {
   background-color: white;
   z-index: 200;
 }

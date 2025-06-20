@@ -1,5 +1,6 @@
 import "../common.js";
 import { BASE_URL } from "../config.js";
+import { initTabHandler } from "../utils/tabUtils.js";
 
 const img = document.querySelector(".product__img");
 const brand = document.querySelector(".product__brand");
@@ -66,14 +67,4 @@ function countBtnClick(operation) {
 }
 
 // tab button
-const tabGroup = document.querySelector(".product__tab-group");
-
-tabGroup.addEventListener("click", (e) => {
-  if (e.target.tagName === "BUTTON") {
-    const activeTab = tabGroup.querySelector(
-      '.underline-tab-button[aria-selected="true"]'
-    );
-    if (activeTab) activeTab.setAttribute("aria-selected", "false");
-    e.target.setAttribute("aria-selected", "true");
-  }
-});
+initTabHandler(".product__tab-group");

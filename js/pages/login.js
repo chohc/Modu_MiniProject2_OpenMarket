@@ -1,4 +1,5 @@
 import { BASE_URL } from "../config.js";
+import { initTabHandler } from "../utils/tabUtils.js";
 
 const guideText = document.getElementById("login-guide");
 const form = document.querySelector(".login-form");
@@ -6,6 +7,8 @@ form.addEventListener("submit", async (e) => {
   e.preventDefault();
   await handleLogin();
 });
+
+initTabHandler(".tab-group");
 
 async function handleLogin() {
   const username = form.id.value.trim();
@@ -47,16 +50,3 @@ async function handleLogin() {
     console.error("로그인 에러: ", error);
   }
 }
-
-// button 활성화
-let member_position = "";
-const tabGroup = document.querySelector(".tab-group");
-tabGroup.addEventListener("click", (e) => {
-  if (e.target.tagName === "BUTTON") {
-    const activeBtn = tabGroup.querySelector(".tab-btn.active");
-    if (activeBtn) activeBtn.classList.remove("active");
-    e.target.classList.add("active");
-
-    member_position = e.target.textContent;
-  }
-});
