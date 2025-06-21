@@ -10,6 +10,8 @@ function init() {
     return;
   }
 
+  // localStorage.clear();
+
   displayProducts();
 }
 
