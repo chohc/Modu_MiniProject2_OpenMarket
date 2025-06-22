@@ -48,7 +48,7 @@ const NAV_ITEMS = {
     },
     {
       id: "loginBtn",
-      href: "../../login.html",
+      href: "../../Modu_MiniProject2_OpenMarket/login.html",
       icon: "./assets/images/icon-user.svg",
       iconHover: "./assets/images/icon-user-2.svg",
       text: "로그인",

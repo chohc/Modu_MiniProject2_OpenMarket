@@ -2,7 +2,7 @@ export class Card {
   constructor({ id = 1, imgURL, brand = "", name = "", price = "" } = {}) {
     this.element = document.createElement("a");
     this.element.className = "card";
-    this.element.href = `../../productDetail.html?id=${id}`;
+    this.element.href = `../../Modu_MiniProject2_OpenMarket/productDetail.html?id=${id}`;
     this.render(imgURL, brand, name, price);
   }
 
