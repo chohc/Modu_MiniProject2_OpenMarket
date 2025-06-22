@@ -11,9 +11,8 @@ const elements = {
   delivery: document.querySelector(".product__delivery"),
   totalQuantity: document.getElementById("totalQuantity"),
   totalPrice: document.getElementById("totalPrice"),
-  minusBtn: document.getElementById("minusBtn"),
-  count: document.getElementById("count"),
-  plusBtn: document.getElementById("plusBtn"),
+  buyProductBtn: document.getElementById("buyProductBtn"),
+  cartBtn: document.getElementById("putInCartBtn"),
 };
 
 const DELIVERY_MAP = {
@@ -30,8 +29,12 @@ function init() {
   }
 
   initTabHandler(".product__tab-group");
-  fetchProductDetail(productID);
   createAmountBtn();
+  elements.count = document.getElementById("count");
+  fetchProductDetail(productID);
+
+  buyProductBtn.addEventListener("click", checkLoginState);
+  putInCartBtn.addEventListener("click", checkLoginState);
 }
 
 async function fetchProductDetail(productID) {
@@ -53,8 +56,8 @@ function displayProductInfo(data) {
   elements.name.textContent = data.name;
   elements.price.textContent = data.price.toLocaleString();
   elements.delivery.textContent = DELIVERY_MAP[data.shipping_method];
-  elements.totalQuantity.textContent = elements.count.value;
   elements.totalPrice.textContent = data.price.toLocaleString();
+  elements.totalQuantity.textContent = elements.count.value;
 }
 
 function createAmountBtn() {
@@ -70,6 +73,10 @@ function createAmountBtn() {
       ).toLocaleString();
     },
   });
+}
+
+function checkLoginState() {
+  console.log("hi");
 }
 
 document.addEventListener("DOMContentLoaded", init);

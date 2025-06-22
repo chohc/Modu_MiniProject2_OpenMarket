@@ -114,7 +114,7 @@
   flex: 2;
 }
 
-#cartBtn {
+#putInCartBtn {
   flex: 1;
 }
 
@@ -138,6 +138,12 @@
 }
 
 /* -----// product info ----- */
+
+/* ---------- modal --------- */
+#goLoginModal {
+  display: none;
+}
+/* -------------------------- */
 
 @media screen and (max-width: 768px) {
   .product-detail-page {

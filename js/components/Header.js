@@ -252,21 +252,6 @@ export class Header {
     this.navigationComponent = new NavigationComponent(mainNav, this.userType);
   }
 
-  //   setupResponsive() {
-  //     ResponsiveUtils.addResizeListener(() => {
-  //       this.searchComponent?.updateResponsive();
-  //     });
-  //   }
-
-  // 사용자 타입 변경 시 네비게이션 업데이트
-  //   updateUserType(newUserType) {
-  //     if (this.userType !== newUserType) {
-  //       this.userType = newUserType;
-  //       const navWrapper = this.element.querySelector('.nav-wrapper');
-  //       this.navigationComponent = new NavigationComponent(navWrapper, this.userType);
-  //     }
-  //   }
-
   getSearchComponent() {
     return this.searchComponent;
   }

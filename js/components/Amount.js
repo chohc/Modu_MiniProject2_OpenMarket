@@ -39,6 +39,7 @@ export class Amount {
     this.minusBtn.type = "button";
 
     this.countInput = document.createElement("input");
+    this.countInput.id = "count";
     this.countInput.type = "number";
     this.countInput.value = this.currentValue;
     this.countInput.min = this.min;

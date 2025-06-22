@@ -62,7 +62,7 @@
             </div>
             <div class="buy-btns">
               <button id="buyProductBtn" class="m-button">바로 구매</button>
-              <button id="cartBtn" class="m-dark-button">장바구니</button>
+              <button id="putInCartBtn" class="m-dark-button">장바구니</button>
             </div>
           </div>
         </div>
@@ -113,6 +113,16 @@
         </ul>
         <div class="product__tab-content"></div>
       </section>
+      <!-- modal -->
+      <div role="modal" id="goLoginModal" aria-hidden="true">
+        <button id="closeBtn" aria-label="창 닫기"><img src="./assets/images/icon-delete.svg" alt=""></button>
+          <p>로그인이 필요한 서비스입니다.<br />로그인 하시겠습니까?</p>
+          <div class="btn-group">
+            <button id="cancleBtn" class="s-white-button">아니오</button>
+            <button id="confirmBtn" class="s-button">예</button>
+          </div>
+        </button>
+      </div>
     </main>
 
     <script type="module" src="./js/pages/productDetail.js"></script>
