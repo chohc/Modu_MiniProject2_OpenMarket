@@ -22,7 +22,7 @@ async function displayProducts() {
     const products = await fetchProducts();
     if (products && products.length > 0) {
       productSection.innerHTML = "";
-      products.forEach((product) => {
+      products.reverse().forEach((product) => {
         const card = new Card({
           id: product.id,
           imgURL: product.image,
@@ -31,7 +31,7 @@ async function displayProducts() {
           price: product.price,
         });
 
-        productSection.prepend(card.element);
+        productSection.append(card.element);
       });
     } else {
       productSection.innerHTML = "<div>상품이 없습니다.</div>";

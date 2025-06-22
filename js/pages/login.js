@@ -1,3 +1,4 @@
+import { Footer } from "../components/Footer.js";
 import { BASE_URL } from "../config.js";
 import { initTabHandler } from "../utils/tabUtils.js";
 
@@ -6,6 +7,7 @@ const form = document.querySelector(".login-form");
 
 function init() {
   initTabHandler(".tab-group");
+  new Footer();
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     await handleLogin();

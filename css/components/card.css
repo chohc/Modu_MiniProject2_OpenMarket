@@ -1,0 +1,41 @@
+.card {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+}
+
+.card__img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border: 1px solid var(--gray-middle);
+  border-radius: var(--border-radius-sm);
+  margin-bottom: 1rem;
+}
+
+.card__brand {
+  color: var(--gray-main);
+  margin-bottom: 0.625rem;
+}
+
+.card__name {
+  font-size: var(--font-size-lg);
+  line-height: 1.375rem;
+  margin-bottom: 0.625rem;
+}
+
+@media screen and (max-width: 768px) {
+  .card__img {
+    margin-bottom: 0.7rem;
+  }
+
+  .card__brand {
+    margin-bottom: 0.4rem;
+  }
+
+  .card__name {
+    line-height: 1.375rem;
+    margin-bottom: 0.4rem;
+  }
+}

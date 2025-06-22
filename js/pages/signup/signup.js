@@ -2,6 +2,7 @@ import { InputHandler } from "./inputHandler.js";
 import { initTabHandler } from "../../utils/tabUtils.js";
 import { initModalHandler } from "../../utils/modalUtils.js";
 import { BASE_URL } from "../../config.js";
+import { Footer } from "../../components/Footer.js";
 
 let isBuyer = true;
 let signupBtn;
@@ -13,6 +14,7 @@ function init() {
   inputHandler.init();
   initTabHandler(".tab-group", toggleSellerMode);
   initModalHandler(".select-btn", ".num-dropdown", selectPhone1);
+  new Footer();
 
   signupBtn.addEventListener("click", (e) => {
     e.preventDefault();
