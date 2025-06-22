@@ -1,578 +1,186 @@
 # 오픈 마켓 서비스
 
+## ✨ 프로젝트 소개
+
+간단한 오픈마켓 형태의 웹 애플리케이션입니다.
+
+---
+
 ## 1. 목표와 기능
 
 ### 1.1 목표
 
-- 상품을 구매하고 판매할 수 있는 서비스 제공
-- 바닐라JS, 반응형과 API연동에 익숙해지기
+- 상품을 구매하고 판매할 수 있는 간단한 마켓 서비스 제작
+- 바닐라 JavaScript, 반응형 웹, 유효성 검사 및 API 연동 경험 강화
 
 ### 1.2 팀 구성
 
 - 개인 프로젝트
 
-### 1.3 기능
+### 1.3 구현된 기능
 
-- 로그인과 회원가입
-- 상품 목록과 상품 상세
+- 로그인 / 회원가입 (유효성 검사 포함)
+- 상품 목록 (홈 화면)
+- 상품 상세 페이지
+- 반응형 웹 적용
 
-### 1.4 화면 구성
-
-|                                                             로그인                                                             |
-| :----------------------------------------------------------------------------------------------------------------------------: |
-| <img src="https://user-images.githubusercontent.com/80824750/208456048-acbf44a8-cd71-4132-b35a-500047adbe1c.gif" width="450"/> |
-|                                           구매회원과 판매회원의 로그인을 지원합니다.                                           |
-
-|                                                            회원가입                                                            |
-| :----------------------------------------------------------------------------------------------------------------------------: |
-| <img src="https://user-images.githubusercontent.com/80824750/208456234-fb5fe434-aa65-4d7a-b955-89098d5bbe0b.gif" width="450"/> |
-|                                          구매회원과 판매회원의 회원가입을 제공합니다.                                          |
-
-|                                                           상품 목록                                                            |
-| :----------------------------------------------------------------------------------------------------------------------------: |
-| <img src="https://user-images.githubusercontent.com/80824750/208456234-fb5fe434-aa65-4d7a-b955-89098d5bbe0b.gif" width="450"/> |
-|                                            홈에서 판매되는 상품 목록을 보여줍니다.                                             |
-
-|                                                           상품 상세                                                            |
-| :----------------------------------------------------------------------------------------------------------------------------: |
-| <img src="https://user-images.githubusercontent.com/80824750/208456234-fb5fe434-aa65-4d7a-b955-89098d5bbe0b.gif" width="450"/> |
-|                                           상품의 상세 설명과 구매 기능을 제공합니다.                                           |
+---
 
 ## 2. 개발 환경 및 배포 URL
 
 ### 2.1 개발 환경
 
-- JavaScript
+- 개발 도구: Visual Studio Code
+- 언어: JavaScript (ES6+)
+- 실행 환경: Edge, Chrome
+- 패키지 매니저: 사용하지 않음 (Vanilla JS 기반)
+- 기타 도구: Live Server (로컬 개발용)
 
 ### 2.2 배포 URL
 
-- https://chohc.github.io/Modu_MiniProject2_OpenMarket/
+- [https://chohc.github.io/Modu_MiniProject2_OpenMarket/](https://chohc.github.io/Modu_MiniProject2_OpenMarket/)
 
-### 2.3 URL 구조(모놀리식)
+### 2.3 URL 구조
 
-- main
+| URL                   | 페이지 설명     | HTML 파일명          |
+| --------------------- | --------------- | -------------------- |
+| `/index.html`         | 상품 목록 (홈)  | `index.html`         |
+| `/productDetail.html` | 상품 상세       | `productDetail.html` |
+| `/login.html`         | 로그인          | `login.html`         |
+| `/signup.html`        | 회원가입        | `signup.html`        |
+| `/404.html`           | 404 에러 페이지 | `404.html`           |
 
-| App  | URL       | Views Function | HTML File Name  | Note     |
-| ---- | --------- | -------------- | --------------- | -------- |
-| main | '/'       | home           | main/home.html  | 홈화면   |
-| main | '/about/' | about          | main/about.html | 소개화면 |
+---
 
-- accounts
+## 3. 기능 흐름도
 
-| App      | URL         | Views Function | HTML File Name         | Note                                           |
-| -------- | ----------- | -------------- | ---------------------- | ---------------------------------------------- |
-| accounts | 'register/' | register       | accounts/register.html | 회원가입                                       |
-| accounts | 'login/'    | login          | accounts/login.html    | 로그인                                         |
-| accounts | 'logout/'   | logout         | accounts/logout.html   | 로그아웃                                       |
-| accounts | 'profile/'  | profile        | accounts/profile.html  | 비밀번호변경기능 / <br>프로필 수정/ 닉네임추가 |
-
-- boardapp
-
-| App   | URL                                                   | Views Function | HTML File Name                            | Note            |
-| ----- | ----------------------------------------------------- | -------------- | ----------------------------------------- | --------------- |
-| board | 'board/'                                              | board          | boardapp/post_list.html                   | 게시판 목록     |
-| board | 'board/<int:pk>/'                                     | post_detail    | boardapp/post_detail.html                 | 게시글 상세보기 |
-| board | 'board/write/'                                        | post_write     | boardapp/post_write.html                  | 게시글 작성     |
-| board | 'board/edit/<int:pk>/'                                | post_edit      | boardapp/post_edit.html                   | 게시글 수정     |
-| board | 'board/delete/<int:pk>/'                              | post_delete    | boardapp/post_delete.html                 | 게시글 삭제     |
-| board | 'board/<int:pk>/comment/'                             | comment_create | boardapp/comment_form.html                | 댓글 작성       |
-| board | 'board/<int:pk>/comment/<br><int:comment_pk>/edit/'   | comment_edit   | boardapp/comment_form.html                | 댓글 수정       |
-| board | 'board/<int:pk>/comment/<br><int:comment_pk>/delete/' | comment_delete | boardapp/comment\_<br>confirm_delete.html | 댓글 삭제       |
-
-- blog
-
-| App  | URL                                               | Views Function | HTML File Name                        | Note                                                |
-| ---- | ------------------------------------------------- | -------------- | ------------------------------------- | --------------------------------------------------- |
-| blog | 'blog/'                                           | blog           | blog/blog.html                        | 갤러리형 게시판 메인 화면                           |
-| blog | 'blog/<int:pk>/'                                  | post           | blog/post.html                        | 상세 포스트 화면                                    |
-| blog | 'blog/write/'                                     | write          | blog/write.html                       | 카테고리 지정, 사진업로드,<br> 게시글 조회수 반영   |
-| blog | 'blog/edit/<int:pk>/'                             | edit           | blog/edit.html                        | 게시물목록보기                                      |
-| blog | 'blog/delete/<int:pk>/'                           | delete         | blog/delete.html                      | 삭제 화면                                           |
-| blog | 'blog/search/'                                    | search         | blog/search.html                      | 주제와 카테고리에 따라 검색,<br> 시간순에 따라 정렬 |
-| blog | 'post/<int:post_pk>/comment/'                     | comment_new    | blog/comment_form.html                | 댓글 입력 폼                                        |
-| blog | 'post/<int:post_pk>/comment/<br><int:parent_pk>/' | reply_new      | blog/comment_form.html                | 대댓글 폼                                           |
-| blog | 'post/<int:pk>/like/'                             | like_post      | blog/post.html                        | 좋아요를 누르면 blog/post로 Redirect됨              |
-| blog | 'comment/<int:pk>/update/'                        | comment_update | blog/comment_form.html                | 댓글 업데이터 경로                                  |
-| blog | 'comment/<int:pk>/delete/'                        | comment_delete | blog/comment\_<br>confirm_delete.html | 댓글 삭제 폼                                        |
-
-### 2.4 URL 구조(마이크로식)
-
-- views의 이름과 views에 믹스인 한 것이 있으면 함께 언급하면 좋습니다.
-
-| app:accounts   | HTTP Method | 설명             | 로그인 권한 필요 | 작성자 권한 필요 |
-| :------------- | :---------- | :--------------- | :--------------: | :--------------: |
-| signup/        | POST        | 회원가입         |                  |                  |
-| login/         | POST        | 로그인           |                  |                  |
-| logout/        | POST        | 로그아웃         |        ✅        |                  |
-| \<int:pk\>/    | GET         | 프로필 조회      |        ✅        |                  |
-| \<int:pk\>/    | PUT         | 프로필 수정      |        ✅        |        ✅        |
-| \<int:pk\>/    | DELETE      | 회원 탈퇴        |        ✅        |        ✅        |
-| status/        | GET         | 로그인 상태 확인 |                  |                  |
-| token/refresh/ | POST        | 만료 토큰 재발급 |                  |                  |
-
-<br>
-
-| app:blog | HTTP Method | 설명          | 로그인 권한 필요 | 작성자 권한 필요 |
-| :------- | :---------- | :------------ | :--------------: | :--------------: |
-| list/    | GET         | 게시판 리스트 |        ✅        |                  |
-| create/  | POST        | 게시물 작성   |        ✅        |                  |
-
-<br>
-
-| app:interview | HTTP Method | 설명           | 로그인 권한 필요 | 작성자 권한 필요 |
-| :------------ | :---------- | :------------- | :--------------: | :--------------: |
-| question/     | POST        | 면접 문제 요청 |        ✅        |                  |
-| grading/      | POST        | 면접 문제 채점 |        ✅        |                  |
-| total/        | POST        | 면접 점수 통계 |        ✅        |                  |
-
-<br>
-
-- 아래와 같이 표현할 수도 있습니다.
-
-| App  | Method | URL                                            | Views Class    | Note                                 |
-| ---- | ------ | ---------------------------------------------- | -------------- | ------------------------------------ |
-| blog | GET    | '/blog/posts/'                                 | PostViewSet    | 게시글 목록                          |
-| blog | POST   | '/blog/posts/'                                 | PostViewSet    | 게시글 생성 / ChatGPT API 요청       |
-| blog | GET    | '/blog/posts/{post_id}/'                       | PostViewSet    | 게시글 상세보기 / 게시글 조회수 증가 |
-| blog | PATCH  | '/blog/posts/{post_id}/'                       | PostViewSet    | 게시글 수정                          |
-| blog | DELETE | '/blog/posts/{post_id}/'                       | PostViewSet    | 게시글 삭제                          |
-| blog | POST   | '/blog/posts/{post_id}/like/'                  | PostViewSet    | 게시글 좋아요 증가                   |
-| blog | GET    | '/blog/posts/{post_id}/comments/'              | CommentViewSet | 게시물의 댓글 목록                   |
-| blog | POST   | '/blog/posts/{post_id}/comments/'              | CommentViewSet | 게시물의 댓글 생성                   |
-| blog | GET    | '/blog/posts/{post_id}/comments/{comment_id}/' | CommentViewSet | 게시물의 특정 댓글 보기              |
-| blog | PATCH  | '/blog/posts/{post_id}/comments/{comment_id}/' | CommentViewSet | 게시물의 특정 댓글 수정              |
-| blog | DELETE | '/blog/posts/{post_id}/comments/{comment_id}/' | CommentViewSet | 게시물의 특정 댓글 삭제              |
-
-<br>
-
-| URL                     | 페이지 설명                                   |       GET        |  POST  | PUT |   DELETE   |    로그인 권한     |   작성자 권한   |
-| ----------------------- | --------------------------------------------- | :--------------: | :----: | :-: | :--------: | :----------------: | :-------------: |
-| /accounts/login         | 로그인                                        |                  |   ✔️   |     |            |                    |                 |
-| /accounts/logout        | 로그아웃                                      |                  |   ✔️   |     |            |                    |                 |
-| /accounts/signup        | 회원가입                                      |                  |   ✔️   |     |            |                    |                 |
-| /accounts/profile       | 프로필 <br> 프로필 수정 <br> 회원 탈퇴        | ✔️<br> <br> <br> |        | ✔️  | <br><br>✔️ | ✔️ <br> ✔️ <br> ✔️ | <br> ✔️ <br> ✔️ |
-| /accounts/token/refresh | 토큰갱신                                      |                  |   ✔️   |     |            |                    |                 |
-| /board                  | 게시글 목록 <br> 게시글 생성                  |    ✔️<br><br>    | <br>✔️ |     |            |      <br> ✔️       |                 |
-| /board/{postid}         | 게시글 상세 <br> 게시글 수정 <br> 게시글 삭제 |  ✔️<br><br><br>  |        | ✔️  | <br><br>✔️ |  <br> ✔️ <br> ✔️   | <br> ✔️ <br> ✔️ |
-
-<br>
-
-## 3. 요구사항 명세와 기능 명세
-
-- https://www.mindmeister.com/ 등을 사용하여 모델링 및 요구사항 명세를 시각화하면 좋습니다.
-- 이미지는 셈플 이미지입니다.
-  <img src="map.png" width="100%">
-- 머메이드를 이용해 시각화 할 수 있습니다.
+- 로그인하지 않아도 상품 목록과 상세 페이지 접근 가능
+- 헤더에서 로그인/회원가입 가능
+- 로그인/회원가입 완료 시 메인 페이지로 리다이렉트
+- 로그인 여부와 관계없이 상품 상세 페이지 접근 가능
 
 ```mermaid
-    sequenceDiagram
-    actor A as client
-    participant B as Web
-    participant C as server
-    A->>+B: 로그인 요청
-    B->>+A: 로그인 정보 요구
-    A->>+C: id, pw 전달
-    alt 로그인 정보가 있고 로그인 정보가 맞을 시
-    C->>+B: access token, refresh token 전달
-    B->>+A: 로그인 성공
-    else 로그인 정보가 없거나 정보가 맞지 않을시
-    C->>+B: False
-    B->>+A: 로그인 실패
-    end
+graph TD
+    A[비로그인 사용자] --> B[상품 목록 페이지]
+    B --> C[상품 상세 페이지]
+    B --> D[로그인 클릭]
+    B --> E[회원가입 클릭]
+    D --> F[로그인 완료]
+    E --> F[회원가입 완료]
+    F --> B[메인 페이지 이동]
+    F --> C
 ```
 
-## 4. 프로젝트 구조와 개발 일정
+## 4. 프로젝트 구조
 
-### 4.1 프로젝트 구조
+```
+📦 Modu_MiniProject2
+├── 📂assets
+│   └── 📂images
+├── 📂css
+│   ├── 📂components
+│   │   ├── amount.css
+│   │   ├── card.css
+│   │   ├── footer.css
+│   │   └── header.css
+│   ├── 📂pages
+│   │   ├── common-login-signup.css
+│   │   ├── login.css
+│   │   ├── productDetail.css
+│   │   ├── products.css
+│   │   └── signup.css
+│   ├── common.css
+│   ├── reset.css
+│   └── variables.css
+├── 📂js
+│   ├── 📂components
+│   │   ├── Amount.js
+│   │   ├── Card.js
+│   │   ├── Footer.js
+│   │   └── Header.js
+│   ├── 📂pages
+│   │   ├── login.js
+│   │   ├── productDetail.js
+│   │   ├── products.js
+│   │   └── 📂signup
+│   │       ├── inputHandler.js
+│   │       ├── signup.js
+│   │       └── validator.js
+│   ├── 📂utils
+│   │   ├── modalUtils.js
+│   │   └── tabUtils.js
+│   ├── common.js
+│   └── config.js
+├── .gitignore
+├── 404.html
+├── index.html
+├── login.html
+├── productDetail.html
+├── signup.html
+└── README.md
+```
 
-- 해당 프로젝트에서 폴더 트리 잘 다듬어 사용하세요. 필요하다면 주석을 달아주세요.
-  📦tutorial  
-   ┣ 📂accounts  
-   ┃ ┣ 📂migrations  
-   ┃ ┣ 📂**pycache**  
-   ┃ ┣ 📜admin.py  
-   ┃ ┣ 📜apps.py  
-   ┃ ┣ 📜forms.py  
-   ┃ ┣ 📜models.py  
-   ┃ ┣ 📜tests.py  
-   ┃ ┣ 📜urls.py  
-   ┃ ┣ 📜views.py  
-   ┃ ┗ 📜**init**.py  
-   ┣ 📂blog  
-   ┃ ┣ 📂migrations  
-   ┃ ┣ 📂**pycache**  
-   ┃ ┣ 📜admin.py  
-   ┃ ┣ 📜apps.py  
-   ┃ ┣ 📜forms.py  
-   ┃ ┣ 📜models.py  
-   ┃ ┣ 📜tests.py  
-   ┃ ┣ 📜urls.py  
-   ┃ ┣ 📜views.py  
-   ┃ ┗ 📜**init**.py  
-   ┣ 📂board  
-   ┃ ┣ 📂migrations  
-   ┃ ┣ 📂**pycache**  
-   ┃ ┣ 📜admin.py  
-   ┃ ┣ 📜apps.py  
-   ┃ ┣ 📜forms.py  
-   ┃ ┣ 📜models.py  
-   ┃ ┣ 📜tests.py  
-   ┃ ┣ 📜urls.py  
-   ┃ ┣ 📜views.py  
-   ┃ ┗ 📜**init**.py  
-   ┣ 📂main  
-   ┃ ┣ 📂migrations  
-   ┃ ┣ 📂**pycache**  
-   ┃ ┣ 📜admin.py  
-   ┃ ┣ 📜apps.py  
-   ┃ ┣ 📜models.py  
-   ┃ ┣ 📜tests.py  
-   ┃ ┣ 📜urls.py  
-   ┃ ┣ 📜views.py  
-   ┃ ┗ 📜**init**.py  
-   ┣ 📂media  
-   ┃ ┣ 📂accounts  
-   ┃ ┣ 📂blog  
-   ┃ ┗ 📂board  
-   ┣ 📂static  
-   ┃ ┣ 📂assets  
-   ┃ ┃ ┣ 📂css  
-   ┃ ┃ ┃ ┣ 📂apps  
-   ┃ ┃ ┃ ┣ 📂authentication  
-   ┃ ┃ ┃ ┣ 📂components  
-   ┃ ┃ ┃ ┣ 📂dashboard  
-   ┃ ┃ ┃ ┣ 📂elements  
-   ┃ ┃ ┃ ┣ 📂forms  
-   ┃ ┃ ┃ ┣ 📂pages  
-   ┃ ┃ ┃ ┣ 📂tables  
-   ┃ ┃ ┃ ┣ 📂users  
-   ┃ ┃ ┣ 📂images  
-   ┃ ┃ ┃ ┣ 📂mockup_image  
-   ┃ ┃ ┣ 📂img  
-   ┃ ┃ ┗ 📂js  
-   ┃ ┣ 📂bootstrap  
-   ┃ ┃ ┣ 📂css  
-   ┃ ┃ ┗ 📂js  
-   ┃ ┗ 📂plugins  
-   ┣ 📂tech_blog  
-   ┃ ┣ 📂**pycache**  
-   ┃ ┣ 📜.env  
-   ┃ ┣ 📜asgi.py  
-   ┃ ┣ 📜settings.py  
-   ┃ ┣ 📜urls.py  
-   ┃ ┣ 📜wsgi.py  
-   ┃ ┗ 📜**init**.py  
-   ┣ 📂templates  
-   ┃ ┣ 📂accounts  
-   ┃ ┃ ┣ 📜login.html  
-   ┃ ┃ ┣ 📜password_change.html  
-   ┃ ┃ ┣ 📜profile.html  
-   ┃ ┃ ┣ 📜profile_edit.html  
-   ┃ ┃ ┣ 📜signup.html  
-   ┃ ┃ ┗ 📜user_list.html  
-   ┃ ┣ 📂blog  
-   ┃ ┃ ┣ 📜blog_base.html  
-   ┃ ┃ ┣ 📜post_detail.html  
-   ┃ ┃ ┣ 📜post_form.html  
-   ┃ ┃ ┣ 📜post_list.html  
-   ┃ ┃ ┗ 📜post_not_found.html  
-   ┃ ┣ 📂board  
-   ┃ ┃ ┣ 📜board_base.html  
-   ┃ ┃ ┣ 📜board_post_detail.html  
-   ┃ ┃ ┣ 📜board_post_form.html  
-   ┃ ┃ ┗ 📜board_post_list.html  
-   ┃ ┣ 📂main  
-   ┃ ┃ ┗ 📜index.html  
-   ┃ ┣ 📜404.html  
-   ┃ ┗ 📜base.html  
-   ┣ 📜CONVENTION.md  
-   ┣ 📜db.sqlite3  
-   ┣ 📜manage.py  
-   ┣ 📜README.md  
-   ┗ 📜requirements.txt
+## 5. 구현 화면
 
-### 4.1 개발 일정(WBS)
+로그인
+<img src="./assets/images/gif/login.gif" width="400"/>
 
-- 아래 일정표는 머메이드로 작성했습니다.
+회원가입
+<img src="./assets/images/gif/signup.gif" width="400"/>
+
+상품 목록
+<img src="./assets/images/gif/home.gif" width="400"/>
+
+상품 상세
+<img src="./assets/images/gif/productDetail.gif" width="400"/>
+
+## 6. 주요 기능 및 코드 설명
+
+🟩 로그인 / 회원가입 유효성 검사
+signup/validator.js: input들 유효성 검사 수행
+
+signup/inputHandler.js: 입력 필드 상태 관리 및 에러 메시지 표시
+
+signup/signup.js: 이벤트와 핸들러 초기화 및 회원가입 submit 처리
+
+login.js: 로그인 요청 및 실패 시 에러 처리
+
+🟦 상품 목록
+products.js: API로부터 상품 목록을 받아와서 Card.js로 렌더링
+
+Card.js: 상품 카드를 HTML로 생성하는 컴포넌트
+
+🟨 상품 상세
+productDetail.js: URL 파라미터로 상품 ID를 가져와 상세 정보 렌더링
+
+Amount.js: 수량 버튼과 총합 계산 기능
+
+🟫 공통 컴포넌트
+Header.js, Footer.js: 모든 페이지에 공통적으로 사용되는 UI 요소 구성
+
+common.js: 페이지 공통 초기화 로직
+
+modalUtils.js, tabUtils.js: 모달과 탭 관련 유틸 함수
+
+## 7. 개발 일정
 
 ```mermaid
 gantt
-    title tutorial django
-    dateFormat YY-MM-DD
-    section 기획
-        글조회(R) :2023-10-26, 1d
-        글생성/수정/삭제(CUD) :2023-10-28, 1d
-        로그인 기능 :2023-10-31, 1d
-        검색 기능 :2023-10-31, 1d
-        상세뷰 추가 구성 :2023-11-4, 1d
-    section 디자인
-        리디자인 :2023-11-6, 1d
-    section FE
-        메인    :2023-10-27, 1d
-        글조회    :2023-10-27, 1d
-        글등록    :2023-10-29, 2d
-        글수정    :2023-10-29, 2d
-        글삭제    :2023-10-29, 2d
-        글검색    :2023-10-30, 1d
-        로그인/로그아웃 :2023-10-31, 1d
-        회원가입 페이지 :2023-11-1, 1d
-        인증 접근 권한 :2023-10-31, 3d
-        유저 추가 :2023-11-2, 1d
-        프로필 페이지 :2023-11-5, 1d
-        이미지, 조회수, 태그 추가 :2023-11-6, 1d
-        댓글 추가 :2023-11-6, 1d
-        리디자인 적용 :2023-11-7, 1d
-    section BE
-        메인    :2023-10-27, 1d
-        글조회    :2023-10-27, 1d
-        글등록    :2023-10-29, 2d
-        글수정    :2023-10-29, 2d
-        글삭제    :2023-10-29, 2d
-        글검색    :2023-10-30, 1d
-        로그인/로그아웃 :2023-10-31, 1d
-        회원가입 페이지 :2023-11-1, 1d
-        인증 접근 권한 :2023-10-31, 3d
-        이미지, 조회수, 태그 :2023-11-5, 2d
-        댓글 :2023-11-5, 2d
+    title 오픈마켓 개발 일정
+    기본 폴더 구조 및 reset.css 정리 :done, 2025-06-16, 1d
+    상품 목록 기능 구현 :done, 2025-06-17, 2d
+    로그인/회원가입 레이아웃 :done, 2025-06-19, 2d
+    유효성 검사 및 JS 처리 :done, 2025-06-21, 4d
+    상품 상세 페이지 :done, 2025-06-20, 1d
+    헤더/푸터 컴포넌트화 :done, 2025-06-22, 3d
+    반응형 스타일링 :active, 2025-06-22, 3d
+    이후 기능 및 오류 수정 :2025-06-22, 3d
 ```
 
-- 아래 WBS는 엑셀을 이용했습니다. 양식은 [다운로드](./WBS_sample.xlsx) 받아 사용하세요. (출처 : https://techcommunity.microsoft.com/gxcuf89792/attachments/gxcuf89792/ExcelGeneral/204594/1/WBS_sample.xlsx)
-  <img src="wbs_xlsx.png" width="80%">
+## ✅ To-do (추후 개선 예정)
 
-- 좀 더 가벼운 프로젝트는 아래 일정표를 사용하세요.
-- 아래 일정표는 [habitmaker.co.kr](https://habitmaker.co.kr) 에서 작성되었습니다.
-- 관련된 스택 표시는 [dev.habitmaker.co.kr](https://dev.habitmaker.co.kr) 에서 작성되었습니다.
-  <img src="habit.jpg" width="50%">
-  <img src="blob.png" width="50%">
+코드 리팩토링 및 모듈 정리
 
-## 5. 역할 분담
+헤더 개선
 
-- 팀장 : 이호준
-- FE : 홍길동
-- FE : 홍길동
-- BE : 홍길동
-- BE : 홍길동
-- 디자인 : 홍길동
-
-## 6. 와이어프레임 / UI / BM
-
-### 6.1 와이어프레임
-
-- 아래 페이지별 상세 설명, 더 큰 이미지로 하나하나씩 설명 필요
-  <img src="ui.png" width="60%">
-
-- 와이어 프레임은 디자인을 할 수 있다면 '피그마'를, 디자인을 할 수 없다면 '카카오 오븐'으로 쉽게 만들 수 있습니다.
-
-### 6.2 화면 설계
-
-- 화면은 gif파일로 업로드해주세요.
-
-<table>
-    <tbody>
-        <tr>
-            <td>메인</td>
-            <td>로그인</td>
-        </tr>
-        <tr>
-            <td>
-		<img src="ui1.png" width="100%">
-            </td>
-            <td>
-                <img src="ui2.png" width="100%">
-            </td>
-        </tr>
-        <tr>
-            <td>회원가입</td>
-            <td>정보수정</td>
-        </tr>
-        <tr>
-            <td>
-                <img src="ui3.png" width="100%">
-            </td>
-            <td>
-                <img src="ui3.png" width="100%">
-            </td>
-        </tr>
-        <tr>
-            <td>검색</td>
-            <td>번역</td>
-        </tr>
-        <tr>
-            <td>
-                <img src="ui3.png" width="100%">
-            </td>
-            <td>
-                <img src="ui3.png" width="100%">
-            </td>
-        </tr>
-        <tr>
-            <td>선택삭제</td>
-            <td>글쓰기</td>
-        </tr>
-        <tr>
-            <td>
-	        <img src="ui3.png" width="100%">
-            </td>
-            <td>
-                <img src="ui3.png" width="100%">
-            </td>
-        </tr>
-        <tr>
-            <td>글 상세보기</td>
-            <td>댓글</td>
-        </tr>
-        <tr>
-            <td>
-                <img src="ui3.png" width="100%">
-            </td>
-            <td>
-                <img src="ui3.png" width="100%">
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-## 7. 데이터베이스 모델링(ERD)
-
-- 아래 ERD는 머메이드를 사용했습니다.
-
-```mermaid
-erDiagram
-    user ||--o{ post : write
-    user {
-      integer id PK
-      varchar username
-      varchar password
-      image profile_image
-      datetime created_at
-      varchar ip_address
-      datetime last_login
-    }
-    post }|--|{ tag : contains
-    post ||--o| category : has
-    post {
-      integer id PK
-      varchar title
-      text content
-      file file_upload
-      image image_upload
-      datetime created_at
-      datetime updated_at
-      varchar writer
-      integer user_id FK
-      integer hits
-      integer tags FK
-      varchar category FK
-    }
-    post ||--o{ comment : contains
-    comment ||--o{ comment : contains
-    comment {
-      integer id PK
-      integer parent FK
-      text comment
-      comment comment_reply FK
-      datetime created_at
-      datetime updated_at
-    }
-
-    tag {
-      integer id PK
-      varchar name
-    }
-
-
-    category {
-      integer id PK
-      varchar name
-    }
-```
-
-- 아래 ERD는 [ERDCloud](https://www.erdcloud.com/)를 사용했습니다.
-  <img src="erd.png" width="60%">
-
-- https://dbdiagram.io/home도 많이 사용합니다.
-
-## 8. Architecture
-
-- 아래 Architecture 설계도는 ChatGPT에게 아키텍처를 설명하고 mermaid로 그려달라 요청한 것입니다.
-
-```mermaid
-graph TD;
-    CI[GitHub CI/CD] -->|Deploys| LS[AWS Lightsail];
-    A[Django Application] -->|Uses| DRF[Django REST Framework];
-    A -->|Real-time communication| C[Django Channels];
-    C -->|Messaging backend| R[Redis];
-    A -->|Connects to| DB[postgresql];
-    A -->|Static & Media Files| S3[AWS S3];
-    FE[Frontend] -->|Deployed on| LS;
-    LS -->|Hosts| A;
-    LS -->|Hosts| FE;
-
-    classDef framework fill:#f9f,stroke:#333,stroke-width:2px;
-    classDef aws fill:#ff9,stroke:#f66,stroke-width:2px,stroke-dasharray: 5, 5;
-    classDef ci fill:#9cf,stroke:#33f,stroke-width:2px;
-
-    class A,DRF,C,DB framework;
-    class LS,S3 aws;
-    class CI ci;
-
-```
-
-- 아래 Architecture 설계도는 PPT를 사용했습니다.
-
-![image](./architecture.png)
-
-- PPT로 간단하게 작성하였으나, 아키텍쳐가 커지거나, 상세한 내용이 필요할 경우 [AWS architecture Tool](https://online.visual-paradigm.com/ko/diagrams/features/aws-architecture-diagram-tool/)을 사용하기도 합니다.
-
-- 시퀀스 다이어그램 등은 아래 레파지토리를 참고해주세요. [FastAPI 퀴즈 서비스](https://github.com/MyBitBox/bitbox)
-
-## 9. 메인 기능
-
-- 끓는 너의 얼음과 꽃 뭇 더운지라 그들에게 봄바람이다. 피가 청춘을 기관과 같이, 무엇을 그들은 피고 무엇을 때문이다. 이는 무엇을 인간이 철환하였는가? 과실이 풀이 거친 인간은 그러므로 그들의 힘차게 이것은 작고 것이다. 가치를 풀밭에 있을 꾸며 보이는 사막이다. 꾸며 낙원을 인도하겠다는 무엇이 인생에 대중을 인류의 것이다. 이상, 피가 이상의 그와 풀이 품었기 가슴이 같은 아니한 보라. 열매를 그들의 가는 뼈 그들은 밝은 힘차게 위하여서. 인생에 영락과 청춘의 광야에서 천하를 무엇을 고동을 쓸쓸하랴?
-
-- 인간의 그들의 얼마나 발휘하기 뼈 꽃 생명을 그들에게 거선의 있으랴? 힘차게 청춘의 그들에게 끓는 사랑의 따뜻한 가는 피다. 긴지라 인생에 얼음과 인간의 튼튼하며, 끝까지 사막이다. 희망의 이상, 없으면 얼음과 더운지라 착목한는 이상은 자신과 커다란 것이다. 피가 아니한 아름답고 사랑의 있는 청춘의 장식하는 무엇이 이것이다. 내려온 우리의 싶이 것은 것은 그들은 무한한 운다. 것은 청춘의 오직 지혜는 그들의 주는 아름다우냐? 날카로우나 원질이 얼마나 얼마나 눈이 싶이 품에 이는 크고 때문이다. 두손을 뭇 이상 영원히 위하여서. 불러 이상은 설레는 열락의 살았으며, 인생을 인생에 위하여서.
-
-- 창공에 구하지 있는 군영과 같이, 않는 있으랴? 더운지라 기쁘며, 곳이 보는 갑 그리하였는가? 예가 미묘한 이상의 있다. 구할 이 많이 가지에 인류의 없으면 몸이 봄바람이다. 속잎나고, 살았으며, 보내는 투명하되 이상의 하여도 것이다. 뼈 것은 그들에게 안고, 수 주며, 몸이 얼음이 평화스러운 쓸쓸하랴? 이상 황금시대를 속에서 아름다우냐? 노래하며 기관과 이상이 원대하고, 인생에 것이다. 산야에 위하여 온갖 것은 갑 청춘을 피어나는 보이는 때문이다. 없는 생명을 그것을 곳으로 사라지지 힘있다.
-
-```mermaid
-		graph TD
-	    A[하루 시작] -->|일어난다| B(세수한다)
-	    B --> C{오늘은 무엇을 할까}
-	    C -->|밥을 먹는다| D[냉장고 확인]
-	    C -->|다시 잔다| E[침대로 돌아가기]
-	    C -->|티비를 본다| F[거실로 가기]
-```
-
-```mermaid
-		sequenceDiagram
-	    A->>+B: B야 소금좀 건내줘
-	    B->>+A: 여기
-	    A-->>-B: 고마워
-```
-
-```mermaid
-		stateDiagram-v2
-	    [*] --> 로그인
-	    로그인 --> 성공
-	    로그인 --> 실패
-	    실패 --> 아이디/비밀번호찾기
-	    아이디/비밀번호찾기 --> 로그인재시도
-	    로그인재시도 --> 성공
-	    성공 --> [*]
-```
-
-## 10. 에러와 에러 해결
-
-- 끓는 너의 얼음과 꽃 뭇 더운지라 그들에게 봄바람이다. 피가 청춘을 기관과 같이, 무엇을 그들은 피고 무엇을 때문이다. 이는 무엇을 인간이 철환하였는가? 과실이 풀이 거친 인간은 그러므로 그들의 힘차게 이것은 작고 것이다. 가치를 풀밭에 있을 꾸며 보이는 사막이다. 꾸며 낙원을 인도하겠다는 무엇이 인생에 대중을 인류의 것이다. 이상, 피가 이상의 그와 풀이 품었기 가슴이 같은 아니한 보라. 열매를 그들의 가는 뼈 그들은 밝은 힘차게 위하여서. 인생에 영락과 청춘의 광야에서 천하를 무엇을 고동을 쓸쓸하랴?
-
-- 인간의 그들의 얼마나 발휘하기 뼈 꽃 생명을 그들에게 거선의 있으랴? 힘차게 청춘의 그들에게 끓는 사랑의 따뜻한 가는 피다. 긴지라 인생에 얼음과 인간의 튼튼하며, 끝까지 사막이다. 희망의 이상, 없으면 얼음과 더운지라 착목한는 이상은 자신과 커다란 것이다. 피가 아니한 아름답고 사랑의 있는 청춘의 장식하는 무엇이 이것이다. 내려온 우리의 싶이 것은 것은 그들은 무한한 운다. 것은 청춘의 오직 지혜는 그들의 주는 아름다우냐? 날카로우나 원질이 얼마나 얼마나 눈이 싶이 품에 이는 크고 때문이다. 두손을 뭇 이상 영원히 위하여서. 불러 이상은 설레는 열락의 살았으며, 인생을 인생에 위하여서.
-
-- 창공에 구하지 있는 군영과 같이, 않는 있으랴? 더운지라 기쁘며, 곳이 보는 갑 그리하였는가? 예가 미묘한 이상의 있다. 구할 이 많이 가지에 인류의 없으면 몸이 봄바람이다. 속잎나고, 살았으며, 보내는 투명하되 이상의 하여도 것이다. 뼈 것은 그들에게 안고, 수 주며, 몸이 얼음이 평화스러운 쓸쓸하랴? 이상 황금시대를 속에서 아름다우냐? 노래하며 기관과 이상이 원대하고, 인생에 것이다. 산야에 위하여 온갖 것은 갑 청춘을 피어나는 보이는 때문이다. 없는 생명을 그것을 곳으로 사라지지 힘있다.
-
-## 10. 개발하며 느낀점
-
-- 끓는 너의 얼음과 꽃 뭇 더운지라 그들에게 봄바람이다. 피가 청춘을 기관과 같이, 무엇을 그들은 피고 무엇을 때문이다. 이는 무엇을 인간이 철환하였는가? 과실이 풀이 거친 인간은 그러므로 그들의 힘차게 이것은 작고 것이다. 가치를 풀밭에 있을 꾸며 보이는 사막이다. 꾸며 낙원을 인도하겠다는 무엇이 인생에 대중을 인류의 것이다. 이상, 피가 이상의 그와 풀이 품었기 가슴이 같은 아니한 보라. 열매를 그들의 가는 뼈 그들은 밝은 힘차게 위하여서. 인생에 영락과 청춘의 광야에서 천하를 무엇을 고동을 쓸쓸하랴?
-
-- 인간의 그들의 얼마나 발휘하기 뼈 꽃 생명을 그들에게 거선의 있으랴? 힘차게 청춘의 그들에게 끓는 사랑의 따뜻한 가는 피다. 긴지라 인생에 얼음과 인간의 튼튼하며, 끝까지 사막이다. 희망의 이상, 없으면 얼음과 더운지라 착목한는 이상은 자신과 커다란 것이다. 피가 아니한 아름답고 사랑의 있는 청춘의 장식하는 무엇이 이것이다. 내려온 우리의 싶이 것은 것은 그들은 무한한 운다. 것은 청춘의 오직 지혜는 그들의 주는 아름다우냐? 날카로우나 원질이 얼마나 얼마나 눈이 싶이 품에 이는 크고 때문이다. 두손을 뭇 이상 영원히 위하여서. 불러 이상은 설레는 열락의 살았으며, 인생을 인생에 위하여서.
-
-- 창공에 구하지 있는 군영과 같이, 않는 있으랴? 더운지라 기쁘며, 곳이 보는 갑 그리하였는가? 예가 미묘한 이상의 있다. 구할 이 많이 가지에 인류의 없으면 몸이 봄바람이다. 속잎나고, 살았으며, 보내는 투명하되 이상의 하여도 것이다. 뼈 것은 그들에게 안고, 수 주며, 몸이 얼음이 평화스러운 쓸쓸하랴? 이상 황금시대를 속에서 아름다우냐? 노래하며 기관과 이상이 원대하고, 인생에 것이다. 산야에 위하여 온갖 것은 갑 청춘을 피어나는 보이는 때문이다. 없는 생명을 그것을 곳으로 사라지지 힘있다.
+SPA 변환
