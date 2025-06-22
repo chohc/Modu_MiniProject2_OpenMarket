@@ -13,7 +13,7 @@
 
 .login-title > a,
 .signup-title > a {
-  width: min(238px, 40%);
+  width: min(14.875rem, 40%);
 }
 
 .login-title img,
@@ -48,7 +48,7 @@
   height: 5rem;
   font-size: var(--font-size-lg);
   font-weight: 500;
-  padding-bottom: 18px;
+  padding-bottom: 1.125rem;
 }
 
 .tab-btn[aria-selected="true"] {
@@ -57,3 +57,44 @@
 }
 
 /* ---------------------- */
+
+/* -- login/signup container -- */
+.login,
+.signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: min(36.375rem, 100%);
+  padding: 0 var(--lr-margin) var(--lr-margin);
+  margin: 0 auto;
+}
+
+.login-form,
+.signup-container {
+  position: relative;
+  z-index: 100;
+  margin-top: 3.875rem;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  background-color: white;
+  border: 1px solid var(--gray-middle);
+  border-radius: var(--border-radius-sm);
+  padding: 35px 36px;
+  margin-bottom: 1.875rem;
+}
+/* ---------------------------- */
+
+@media screen and (max-width: 768px) {
+  .login-form,
+  .signup-container {
+    padding: 20px 21px;
+  }
+
+  .tab-btn {
+    font-size: var(--font-size-base);
+  }
+}

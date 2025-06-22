@@ -27,7 +27,7 @@ async function displayProducts() {
           id: product.id,
           imgURL: product.image,
           name: product.info,
-          manufacturer: product.name,
+          brand: product.name,
           price: product.price,
         });
 

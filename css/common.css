@@ -40,8 +40,8 @@ label {
 
 .text-input-box {
   display: flex;
-  flex: 1;
-
+  flex: 1 1 0;
+  width: 0;
   padding: 1.06rem 1rem;
   border: 1px solid var(--gray-middle);
   border-radius: var(--border-radius-xs);

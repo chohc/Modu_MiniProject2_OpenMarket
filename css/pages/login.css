@@ -1,34 +1,12 @@
 /* main */
 
-.login {
-  display: flex;
-  flex-direction: column;
-
-  width: min(582px, 100%);
-  padding: 0 var(--lr-margin);
-  margin: 0 auto;
-}
-
 .login-container {
   position: relative;
   width: 100%;
 }
 
 .login-form {
-  position: relative;
-  z-index: 100;
-  margin-top: 62px;
-
-  display: flex;
-  flex-direction: column;
   gap: 6px;
-
-  width: 100%;
-  background-color: white;
-  border: 1px solid var(--gray-middle);
-  border-radius: var(--border-radius-sm);
-  padding: 35px 36px;
-  margin-bottom: 30px;
 }
 
 .login-form button {

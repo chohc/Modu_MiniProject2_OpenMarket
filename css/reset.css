@@ -8,6 +8,7 @@ html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
+  font-size: 16px;
 }
 
 body {
@@ -15,7 +16,6 @@ body {
   padding: 0;
   font-family: var(--font-family);
   font-weight: 400;
-  font-size: 16px;
   line-height: 1.5;
   color: var(--black-main);
   background-color: #fff;
@@ -206,6 +206,12 @@ dd {
 }
 
 :focus-visible {
-  outline: 2px solid #007bff;
+  outline: 2px solid var(--green-main);
   outline-offset: 2px;
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
 }
