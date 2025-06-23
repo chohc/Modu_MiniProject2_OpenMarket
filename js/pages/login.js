@@ -51,7 +51,7 @@ async function handleLogin() {
     localStorage.setItem("user_info", JSON.stringify(data.user));
 
     // redirect
-    window.location.href = "/";
+    window.location.href = "./Modu_MiniProject2_OpenMarket/";
   } catch (error) {
     console.error("로그인 에러: ", error);
   }
